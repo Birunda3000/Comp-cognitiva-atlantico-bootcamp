@@ -1,2 +1,2 @@
 # Comp-cognitiva-atlatico-bootcamp
-Repositorio destinado as atividades do atlatico bootcamp 2022
+Repositório destinado as atividades do atlântico bootcamp 2022, na trilha de computação cognitiva
