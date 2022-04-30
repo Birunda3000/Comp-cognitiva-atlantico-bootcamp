@@ -1,0 +1,2 @@
+importações das bibliotecas no final
+porque lematização (passado, plural ...)
