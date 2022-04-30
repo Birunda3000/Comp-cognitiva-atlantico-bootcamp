@@ -1,4 +1,4 @@
-# Comp-cognitiva-atlatico-bootcamp
+# Comp-cognitiva-atlantico-bootcamp
 Repositório destinado as atividades do [atlântico bootcamp 2022](https://www.atlantico.com.br/academy-bootcamp/), na trilha de computação cognitiva
 
 ## Assuntos abordados
