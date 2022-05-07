@@ -4,10 +4,8 @@ import pdfplumber
 import re
 
 def pdf_check (string):
-    if '.pdf' in string:
-        return True
-    else:
-        return False
+    # Returns True or False
+    return '.pdf' in string
 
 DATADIR = "docs"
 DATADIR = str(input("Caminho dos documentos"))
