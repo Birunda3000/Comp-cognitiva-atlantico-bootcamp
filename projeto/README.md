@@ -4,4 +4,4 @@ docs = pdf originais
 
 text = docs em texto
 
-cleaned = tokenizados (sem caracteres especiais e sem numeros e sem stop words)
+cleaned_no_lem = tokenizados (sem caracteres especiais e sem numeros e sem stop words)
