@@ -1,16 +1,20 @@
 # Import necessary modules
-from nltk.tokenize import ____ , _____
-from NLP.src.nlp_utils import get_sample_Santo_Graal
+from nltk.tokenize import sent_tokenize , word_tokenize
+from nlp_utils import get_sample_Santo_Graal
+
+#print(word_tokenize(get_sample_Santo_Graal()))
 
 # Split scene_one into sentences: sentences
 scene_one = get_sample_Santo_Graal()
-sentences = _____
+sentences = sent_tokenize(scene_one)
+print(sentences[0])
 
 # Use word_tokenize to tokenize the fourth sentence: tokenized_sent
-tokenized_sent = _____
+tokenized_sent = word_tokenize(sentences[3])
+print(tokenized_sent)
 
 # Make a set of unique tokens in the entire scene: unique_tokens
-unique_tokens = set(____)
+unique_tokens = set(word_tokenize(get_sample_Santo_Graal()))
 
 # Print the unique tokens result
-print(___)
+print(unique_tokens)
