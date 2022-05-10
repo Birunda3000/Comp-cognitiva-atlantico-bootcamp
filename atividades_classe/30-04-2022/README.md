@@ -1,4 +1,5 @@
 *repositorio de um aluno*
+as atividades vão ser adicionadas em 2 formas .py e .ipynb, 2 codigos para a mesma questão
 # Atividades de Sala
 > Orientações para execução das atividades de sala.
 
