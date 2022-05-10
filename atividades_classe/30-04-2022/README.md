@@ -1,4 +1,4 @@
-"repositorio de um aluno"
+*repositorio de um aluno*
 # Atividades de Sala
 > Orientações para execução das atividades de sala.
 
