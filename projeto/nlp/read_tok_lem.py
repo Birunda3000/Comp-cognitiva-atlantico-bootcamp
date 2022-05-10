@@ -2,11 +2,12 @@ import os
 import pathlib
 import pdfplumber
 import re
+import stanza
 import nltk
 nltk.download('stopwords')
-from nltk.probability import FreqDist
-import matplotlib.pyplot as plt
-import stanza
+
+from nltk.probability import FreqDist#*
+import matplotlib.pyplot as plt#*
 
 def file_check (file_name, label='texto'):# Returns True or False
     return label in file_name
@@ -31,8 +32,8 @@ def read_files(DATADIR):
 def clean_special_characters(texts):
     cleaned_texts_list = []
     for text in texts:        
-        text = re.sub(u'-', ' ', text)#palavras com -
-        cleaned_text = re.sub(u'[^a-zA-ZáéíóúÁÉÍÓÚâêîôÂÊÎÔãõÃÕçÇñÑ ]', '', text)
+        text = re.sub(u'-', ' ', text)#palavras com - à
+        cleaned_text = re.sub(u'[^a-zA-ZàáéíóúÁÉÍÓÚâêîôÂÊÎÔãõÃÕçÇñÑ ]', '', text)
         cleaned_text = cleaned_text.lower()
         cleaned_texts_list.append(cleaned_text)
     return cleaned_texts_list
@@ -49,7 +50,7 @@ def remove_stopwords(texts):
         texts_list.append(text_no_stop)    
     return texts_list
 
-def tokenize_lemantize(pathModelStanza, texts):
+def tokenization_lemmatization(pathModelStanza, texts):
     nlp = stanza.Pipeline(lang='pt', processors='tokenize,lemma', model_dir=pathModelStanza)
     text_list = []
     for text in texts:    
@@ -62,16 +63,16 @@ def imprimir_lemantizacao(doc):
 
 def write_text(texts, path=''):  
     for i in range(len(texts)):
-        path_w = os.path.join(path,'cleaned_text-'+str(i)+'.txt')
+        path_w = os.path.join(path,'cleaned_text-'+str(i+1)+'.txt')
         print(path_w)#exibe os arquivos criados
         with open(path_w, "w") as text_file:
-            [text_file.write(f'{word.lemma}\n') for sent in texts[i].sentences for word in sent.words]
+            [text_file.write(f'{word.lemma} ') for sent in texts[i].sentences for word in sent.words]
 
 def pre_processing(path='', output_path='text', model_path='stanza_models'):
     texts = read_files(path)
     cleaned_text = clean_special_characters(texts)
     text_no_stop = remove_stopwords(cleaned_text)
-    text_lemma = tokenize_lemantize(model_path, text_no_stop)
+    text_lemma = tokenization_lemmatization(model_path, text_no_stop)
     write_text(texts=text_lemma, path=output_path)
 
-pre_processing(path='docs', output_path='texts', model_path='stanza_models')
+pre_processing(path='../_data', output_path='../_data', model_path='stanza_models')
