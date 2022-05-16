@@ -1,4 +1,4 @@
-# Computação-cognitiva-atlantico-bootcamp - rascunho do projeto
+# Computação-cognitiva-atlantico-bootcamp - rascunhos do projeto
 Entrada pasta docs
 
 Saida na pasta texts
