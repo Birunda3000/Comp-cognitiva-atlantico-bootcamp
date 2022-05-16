@@ -3,6 +3,7 @@ Repositório destinado as atividades do [atlântico bootcamp 2022](https://www.a
 
 ## Assuntos abordados
 * Procesamento de Linguagem Natural
+  * Link do repositorio do projeto: https://gitlab.com/atlantico-academy-bootcamp/cognitive-computing
 * Visão Computacional
 ## Estrutura de Pastas
 * atividades_classe
