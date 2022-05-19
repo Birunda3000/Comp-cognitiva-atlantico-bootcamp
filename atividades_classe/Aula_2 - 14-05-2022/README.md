@@ -1,5 +1,5 @@
 *repositorio de um aluno*
-as atividades vão ser adicionadas ate dia 16/05/2022
+as atividades vão ser adicionadas ate dia 20/05/2022
 
 # Atividades de Sala
 > Orientações para execução das atividades de sala.
