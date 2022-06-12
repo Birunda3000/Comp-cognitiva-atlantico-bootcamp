@@ -45,9 +45,10 @@ def expand2square(rgb_img, background_color=(0, 0, 0)):
 
 
 def read_imgs(path: str, height: int = 100, width: int = 100, resize: bool = False, mode: str = 'GRAYSCALE', squared: bool = False, square_color=(0, 0, 0), show: bool = False, cmap: str = 'gray', write: bool = False, write_path: str = 'data'):
-    '''read images from path and return array (return [0|255] pixels)'''
+    '''read images from path and return array (return [0|255] pixels), and a array with the files names'''
     modes = ['GRAYSCALE', 'RGB', 'UNCHANGED', '']
     images_array = []
+    files_name = []
     path = pathlib.Path(path)
     all_path = os.listdir(path)
     for img_path in tqdm(all_path):
@@ -62,6 +63,7 @@ def read_imgs(path: str, height: int = 100, width: int = 100, resize: bool = Fal
         else:
             raise Exception(
                 f"Mode must contain one of the following values: {modes}")
+        files_name.append(img_path)
         if resize:
             img_array = cv2.resize(img_array, (width, height))
         if squared:
@@ -74,7 +76,7 @@ def read_imgs(path: str, height: int = 100, width: int = 100, resize: bool = Fal
     if write:
         save_data(write_path, images_array)
 
-    return images_array
+    return images_array,files_name
 
 
 def concatenate2_2_it(A, B):
@@ -97,7 +99,7 @@ def concatenate3_2_it(A, B, C):
     return D
 
 
-def take_area(img, nome: str):
+def take_area(img):
     img = np.array(img)
     area = 0
     altura_max_index = 0
@@ -132,7 +134,7 @@ def take_area(img, nome: str):
     #print(f'Altura: {altura_max_index-altura_min_index}')
     #print(f'Largura: {largura_max_index-largura_min_index}')
 
-    return [nome, area, altura_max_index-altura_min_index, largura_max_index-largura_min_index]
+    return [area, altura_max_index-altura_min_index, largura_max_index-largura_min_index]
 
 
 def IOU(img1, img2):
