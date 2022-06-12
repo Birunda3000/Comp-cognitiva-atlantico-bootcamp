@@ -1,2 +1,3 @@
-Use_model = resultados
-Train_unet = treino da rede
+## Use_model = resultados
+## Train_unet = treino da rede
+## models = redes salvas
