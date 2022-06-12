@@ -2,9 +2,13 @@
 Repositório destinado as atividades do [atlântico bootcamp 2022](https://www.atlantico.com.br/academy-bootcamp/), na trilha de computação cognitiva
 
 ## Assuntos abordados
+
+* Repositorio: https://github.com/spinosaphb/cognitive-computing-projects
+
 * Procesamento de Linguagem Natural
   * Link do repositorio do projeto: https://gitlab.com/atlantico-academy-bootcamp/cognitive-computing
 * Visão Computacional
+  * Link do repositorio do projeto: https://github.com/spinosaphb/cognitive-computing-projects/tree/develop/cv
 ## Estrutura de Pastas
 * atividades_classe
   * datas_das_aulas
