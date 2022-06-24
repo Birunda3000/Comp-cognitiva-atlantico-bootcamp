@@ -76,7 +76,7 @@ def read_imgs(path: str, height: int = 100, width: int = 100, resize: bool = Fal
     if write:
         save_data(write_path, images_array)
 
-    return images_array,files_name
+    return images_array, files_name
 
 
 def concatenate2_2_it(A, B):
