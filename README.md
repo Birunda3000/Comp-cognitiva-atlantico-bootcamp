@@ -1,5 +1,5 @@
 # Computação-cognitiva-atlantico-bootcamp
-Repositório destinado as atividades do [atlântico bootcamp 2022](https://www.atlantico.com.br/academy-bootcamp/), na trilha de computação cognitiva
+Repositório destinado as atividades do [Atlântico Academy Bootcamp 2022](https://www.atlantico.com.br/academy-bootcamp/), na trilha de computação cognitiva
 
 ## Assuntos abordados
 
