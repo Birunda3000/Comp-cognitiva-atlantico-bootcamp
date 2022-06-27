@@ -5,7 +5,7 @@
 A introdução seguir contem trechos do artigo *[Uma rede UNet modificada para segmentação e
 identificação de lesões pulmonares em tomografias](https://bdm.unb.br/bitstream/10483/29884/1/2021_ThiagoAraujoDaSilva_tcc.pdf) por Thiago Araujo da Silva*  
 ___
-Redes Neurais Artificiais, ou Artificial Neural Network (ANN), são modelos computacionais de aprendizado de máquina inspirados em redes neurais biológicas, projetados para simular a maneira como o cérebro humano processa as informações. As ANNs obtêm seu conhecimento detectando padrões e relacionamentos nos dados e aprendem através da experiência. Assim como uma rede neural biológica, a unidade básica da ANN é o neurônio. 
+Redes Neurais Artificiais, ou Artificial Neural Network (ANN), são modelos computacionais de aprendizado de máquina inspirados em redes neurais biológicas, projetados para simular a maneira como o cérebro humano processa as informações. As ANNs obtêm seu conhecimento detectando padrões e relacionamentos nos dados e aprendem através da experiência. Assim como uma rede neural biológica, a unidade básica da ANN é o neurônio.
 
 Uma rede com apenas um neurônio, chamada de Perceptron, é capaz de classificar padrões de forma extremamente limitada, pois agrupa apenas dados linearmente separáveis. Para escalar a rede e resolver problemas de maior magnitude, utiliza-se uma arquitetura mais robusta chamada de Rede Neural Multicamadas, ou Multilayer Perceptron (MLP). Uma MLP, consiste em um sistema de neurônios simplesmente conectados, distribuídos em camadas, podendo estas serem de entrada, ocultas ou de saída. Uma MLP com mais de uma camada oculta é denominada de Rede Neural Profunda, ou Deep
 Artificial Neural Network.
@@ -16,7 +16,7 @@ Redes convolucionais são tipicamente utilizadas em tarefas de classificação, 
 
 U-Net é uma rede neural convolucional que foi desenvolvida para segmentação de imagens biomédicas no Departamento de Ciência da Computação da Universidade de Freiburg. A rede é baseada na rede totalmente convolucional e sua arquitetura foi modificada e estendida para trabalhar com menos imagens de treinamento e gerar segmentações mais precisas.
 
-Aqui sera utilizada uma rede tipo unet para classificar os pixels de fotos de folhas de arvores retiradas pelo [**THE SQUAD ou squad 3**](https://github.com/spinosaphb/cognitive-computing-projects/tree/develop)
+Aqui sera utilizada uma rede tipo unet para classificar os pixels de fotos de folhas de arvores retiradas pelo [**THE SQUAD ou squad 3**](https://github.com/spinosaphb/cognitive-computing-projects/tree/develop/nlp)
 durante o [Atlântico Academy Bootcamp 2022](https://www.atlantico.com.br/academy-bootcamp/), o objetivo é diferenciar a folha em destaque do resto da imagem
 
 ## Metodologia
@@ -30,33 +30,33 @@ A rede neural convolucional e todo o pré-processamento dos dados foram implemen
 ___
 ![Exemplo da base](exemplo-35.jpg)
 
-Foram 111 fotos (disponiveis no drive), retiradas sobre uma folha de papel A4, com flash (enquadrando a folha completamente), com a parte que recebe sol virada para cima e com seus talos/cabo retirados. Dessas 45 delas tem suas respectivas segmentações padrão ouro e 66 delas não. As imagens com segmentação foram usadas no treino e as sem como teste (avaliação visual). Foram utilizadas varias resoluções (no maximo FULL HD) mais sempre com a proporção 16:9. Na segmentação a cor preta (0, 0, 0) e considerado como fundo e branco (1, 1, 1) como parte da folha. Todas em formato jpg. Para identicar uma imagem e sua respectiva segmentação, foram usados os mesmos nomes em cada arquivo. As imagens estão disponiveis no link: <https://drive.google.com/drive/u/1/folders/1kfXMl4MBqpJSXTO51Qt9teGXopra7ggn>
+Foram 111 fotos (disponiveis no drive), retiradas sobre uma folha de papel A4, com flash (enquadrando a folha completamente), com a parte que recebe sol virada para cima e com seus talos/cabo retirados. Dessas 45 delas tem suas respectivas segmentações padrão ouro e 66 delas não. As imagens com segmentação foram usadas no treino e as sem como teste (avaliação visual). Foram utilizadas varias resoluções (no maximo FULL HD) mais sempre com a proporção 16:9. Na segmentação a cor preta (0, 0, 0) e considerado como fundo e branco (1, 1, 1) como parte da folha. Todas em formato jpg. Para identicar uma imagem e sua respectiva segmentação, foram usados os mesmos nomes em cada arquivo. As imagens estão disponiveis no link: <https://drive.google.com/drive/u/1/folders/1kfXMl4MBqpJSXTO51Qt9teGXopra7ggn>, foram usados a estrutura de pastas e nomes de arquivos da pasta _DATA
 
 **Pre-processamento**
 ___
 
 * Resize (opcional)
 * Preenchimento das bordas (para a imagem ficar quadrada)
-* Normalização ([0,1])
+* Normalização dos pixels no intervalo de ([0,1])
 
 **Arquitetura**
 ___
 ![Arquitetura de rede](model.png)
 
-A rede neural convolucional escolhida como base para a realização dos experimentos foi a UNet, devido a sua ampla utilização em tarefas de segmentação contendo baixa quantidades de dados de treinamento (detalhes de arquitetura foram suprimidos aqui devido ao tamanho do modelo, para mais detalhes de arquitetura consultar o repositorio).  
+A rede neural convolucional escolhida como base para a realização dos experimentos foi a UNet, devido a sua ampla utilização em tarefas de segmentação contendo baixa quantidades de dados de treinamento (detalhes de arquitetura foram suprimidos aqui devido ao tamanho do modelo, para mais detalhes de arquitetura consultar o [repositorio](https://github.com/spinosaphb/cognitive-computing-projects/blob/develop_erick/cv/projeto/pdi/train_unet.ipynb)).  
 
 O treinamento bem-sucedido de redes profundas requer milhares de exemplos de treinamento. A UNet, apresenta uma rede e estratégia de treinamento que se baseia no forte uso de aumento de dados para usar as amostras disponíveis de forma mais eficiente.  
 Montada a partir de uma FCNN (Fully Convolutional Neural Network), a arquitetura foi modificada e estendida de modo a necessitar de pouquíssimas imagens de treinamento e produzindo segmentações mais precisas.
 A rede não possui nenhuma camada totalmente conectada e usa apenas a parte válida de cada convolução, ou seja, o mapa de segmentação contém apenas os pixels para os quais o contexto completo está disponível na imagem de entrada.
 
-Para o treinamento foram utilizadas 150 epocas de treino com interrupção com 10 epocas seguidas sem melhora na função de erro o treinamento é interrompido e os melhores pesos são recuperados, as imagens são apresentadas em batches de 64 imagens.  
+Para o treinamento foram utilizadas 150 epocas de treino com interrupção com 10 epocas seguidas sem melhora na função de erro o treinamento é interrompido e os melhores pesos são recuperados, as imagens são apresentadas em batches de 5 imagens.  
 
 **Avaliação**
 ___
 ![imagens de treino](treino-42.jpg)
 ![imagens de teste](ORIGINAL64.jpg)
 
-Para avaliar vou usar como exemplo o **modelo treinado usando imagens 160 x 288, k=5**.
+Para avaliar vou usar como exemplo o **modelo treinado usando imagens 160 x 288, k=5 (k é um parametro usado para manter a proporção da imagem caso seja necessario mudar a resolução)**.
 A metrica utilizada foi o [IOU](https://towardsdatascience.com/intersection-over-union-iou-calculation-for-evaluating-an-image-segmentation-model-8b22e2e84686) nela esta rede teve score_IOU de **.99 medio** para as 45 imagens com segmentação padrão ouro e com resultados visualmente perfeitos em sua maioria nas imagens sem a segmentações padrão ouro.
 
 ## Métricas
@@ -195,9 +195,20 @@ Sobre esse topico tenho alguns topicos a abordar:
 
 ![talo](talo.jpg)
 
-* Devido a individualidades das folhas algumas tem caracteristicas reflexivas que causam uma mancha branca na foto, na maioria dos casos isso contornado pela rede, mas em um caso especifico...
+* Devido a individualidades das folhas algumas tem caracteristicas reflexivas que causam uma mancha branca na foto, na maioria dos casos isso contornado pela rede, mas em um caso especifico... (Em treinos posteriores esse erro foi contornado)
 
 ![exemplo-ruim](exemplo-ruim.png)
+
+Mas também pode ser resolvido com pos-processamneto (tipo fill holes)
+
+* Proximos passos: algumas coisas que poderiam melhorar os resultados
+  * Image augmentation (o exemplo deve estar rodando até agora)​: 45 imagens é numero limitado de imagens, modificar a base original para gerar novos exemplos poder ser proveitoso
+![augmentation example](aug.png)
+  * Coleta de mais exemplos​: Nada melhor que mais exemplos reais
+  * Exemplos com mais ruido​: Exemplos de fotos em situações menos controladas, como tiradas em diferentes fundos como no chão ou com alguem segurando a folha com a mão, folhas de outras cores, mais de uma folha na imagem... (ou tudo junto, quanto pior melhor). Esse tipo ruido pode tornar a rede mais robusta para esse tipo de coisa aumentando seu dominio de aplicação.
+![outros1](outros.png)
+  * [Aceleração por GPU](https://www.cienciaedados.com/gpu-e-deep-learning/) (porque demora pra peste esse treino)
+![gpu](gpu.png)
 
 ## Referencias
 
