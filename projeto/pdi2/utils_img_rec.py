@@ -33,6 +33,7 @@ def prep_data(data, CATEGORIES, IMG_SIZE, numero_de_canais, shuffle=True):
     #print('Shape de entrada dos dados: ', np.array(X).shape)
     
     X = np.array(X).reshape(-1, IMG_SIZE, IMG_SIZE, numero_de_canais)
+
     #X = np.array(X)
 
 
@@ -42,10 +43,10 @@ def prep_data(data, CATEGORIES, IMG_SIZE, numero_de_canais, shuffle=True):
     return X, res
 
 
-def prepare(filepath):
+def prepare(filepath, IMG_SIZE, numero_de_canais):
     img_array = cv2.imread(filepath, cv2.IMREAD_GRAYSCALE)
     new_array = cv2.resize(img_array, (IMG_SIZE, IMG_SIZE))
-    return new_array, new_array.reshape(-1, IMG_SIZE, IMG_SIZE, 1)
+    return new_array, new_array.reshape(-1, IMG_SIZE, IMG_SIZE, numero_de_canais)
 
 def plot_image(prediction_array, true_label, img):
     plt.grid(False)
