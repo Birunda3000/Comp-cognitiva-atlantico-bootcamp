@@ -48,7 +48,7 @@ def prepare(filepath, IMG_SIZE, numero_de_canais):
     new_array = cv2.resize(img_array, (IMG_SIZE, IMG_SIZE))
     return new_array, new_array.reshape(-1, IMG_SIZE, IMG_SIZE, numero_de_canais)
 
-def plot_image(prediction_array, true_label, img):
+def plot_image( CATEGORIES ,prediction_array, true_label, img):
     plt.grid(False)
     plt.xticks([])
     plt.yticks([])
@@ -60,7 +60,7 @@ def plot_image(prediction_array, true_label, img):
         color = 'red'
     plt.xlabel("Classe - {} | {:2.0f}% (true class {})".format(CATEGORIES[predicted_label], 100*np.max(prediction_array), CATEGORIES[true_label]), color=color)
 
-def plot_value_array(prediction_array, true_label):
+def plot_value_array( CATEGORIES ,prediction_array, true_label):
     plt.grid(False)
     plt.xticks([])
     plt.yticks([])
