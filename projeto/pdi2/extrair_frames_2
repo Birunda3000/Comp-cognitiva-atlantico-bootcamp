@@ -1,0 +1,37 @@
+import cv2
+from cvzone.SelfiSegmentationModule import SelfiSegmentation
+import os
+import cvzone
+
+# ler um arquivo de vídeo
+cap = cv2.VideoCapture('videos/jeronimo2.mp4')
+
+# grava em tempo real
+#cap = cv2.VideoCapture(0)
+
+
+segmentor = SelfiSegmentation()
+
+count = 0
+
+while True:
+
+    success, img = cap.read()
+
+    key = cv2.waitKey(1)
+    if key == ord('q') or not success:
+        print('Vídeo encerrado')
+        break
+
+    img =  cv2.resize(img, (224, 224))
+
+    # ativar se as imagens vinherem de cabeça pra baixo
+    #img = cv2.flip(img, -1)
+
+    imgOut = segmentor.removeBG(img, (255, 255, 255), threshold=0.83)
+    cv2.imshow("image", imgOut)
+    #cv2.moveWindow('image',400, 0)
+
+    # salvar em uma pasta
+    #cv2.imwrite('fotosjeronimo/jeronimo%d.jpg' % (count), imgOut) 
+    count += 1
