@@ -9,6 +9,8 @@ Repositório destinado as atividades do [Atlântico Academy Bootcamp 2022](https
   * Link do repositorio do projeto: https://gitlab.com/atlantico-academy-bootcamp/cognitive-computing
 * Visão Computacional - Segmentação
   * Link do repositorio do projeto: https://github.com/spinosaphb/cognitive-computing-projects/tree/develop/cv
+* Visão Computacional - Classificação
+  * Link do repositorio do projeto:
 ## Estrutura de Pastas
 * atividades_classe
   * datas_das_aulas
